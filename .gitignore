@@ -49,3 +49,6 @@ next-env.d.ts
 /prisma/*.db-journal
 
 !.env.example
+
+# real receipt PDFs used to build the parser
+/samples/
