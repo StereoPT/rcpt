@@ -1,6 +1,7 @@
 "use client";
 
 import { ReceiptActions } from "@/components/receipts/ReceiptActions";
+import { ROUTES } from "@/constants/routes";
 import type { Receipt } from "@/generated/prisma/client";
 import { formatCurrency } from "@/lib/formatter";
 import type { ColumnDef } from "@tanstack/react-table";
@@ -15,7 +16,7 @@ export const receiptColumns: ColumnDef<Receipt>[] = [
     cell: ({ row }) => (
       <Link
         className="font-medium hover:underline"
-        href={`/receipts/${row.original.id}`}
+        href={ROUTES.receipt(row.original.id)}
       >
         {row.original.store}
       </Link>

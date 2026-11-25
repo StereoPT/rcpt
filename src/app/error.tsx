@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/constants/routes";
 import { ArrowLeft, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -30,7 +31,7 @@ const ErrorPage = ({ error, reset }: ErrorPageProps) => {
           </Button>
           <Button
             nativeButton={false}
-            render={<Link href="/receipts" />}
+            render={<Link href={ROUTES.receipts} />}
             size="lg"
             variant="outline"
           >

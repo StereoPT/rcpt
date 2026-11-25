@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/constants/routes";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -12,7 +13,7 @@ const NotFound = () => {
         </p>
         <Button
           nativeButton={false}
-          render={<Link href="/receipts" />}
+          render={<Link href={ROUTES.receipts} />}
           size="lg"
         >
           <ArrowLeft />

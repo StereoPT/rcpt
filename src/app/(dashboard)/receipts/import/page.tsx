@@ -1,5 +1,6 @@
 import { ImportReceipt } from "@/components/receipts/ImportReceipt";
 import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/constants/routes";
 import { ImportReceiptProvider } from "@/providers/ImportReceiptProvider";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
@@ -15,7 +16,7 @@ const ReceiptsImportPage = () => {
           <Button
             aria-label="Back to Receipts"
             nativeButton={false}
-            render={<Link href="/receipts" />}
+            render={<Link href={ROUTES.receipts} />}
             size="icon"
             variant="outline"
           >
