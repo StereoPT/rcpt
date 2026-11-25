@@ -7,3 +7,17 @@ export const editReceiptSchema = z.object({
 });
 
 export type EditReceiptInput = z.infer<typeof editReceiptSchema>;
+
+export const lineItemSchema = z.object({
+  description: z.string().trim().min(1, "Description is required"),
+  quantity: z.number("Quantity is required").gt(0, "Quantity must be positive"),
+  netAmount: z.number("Net amount is required"),
+});
+
+export type LineItemInput = z.infer<typeof lineItemSchema>;
+
+export const createReceiptSchema = editReceiptSchema.extend({
+  lineItems: z.array(lineItemSchema).min(1, "Add at least one Line Item"),
+});
+
+export type CreateReceiptInput = z.infer<typeof createReceiptSchema>;
