@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ROUTES } from "@/constants/routes";
 import { useReceipt } from "@/hooks/receipt/useReceipt";
 import { formatCurrency } from "@/lib/formatter";
 import { format } from "date-fns";
@@ -31,7 +32,7 @@ export const ReceiptDetail = ({ id }: ReceiptDetailProps) => {
         <Button
           aria-label="Back to Receipts"
           nativeButton={false}
-          render={<Link href="/receipts" />}
+          render={<Link href={ROUTES.receipts} />}
           size="icon"
           variant="outline"
         >

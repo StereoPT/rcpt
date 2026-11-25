@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Spinner } from "@/components/ui/spinner";
+import { ROUTES } from "@/constants/routes";
 import { useCreateReceipt } from "@/hooks/receipt/useCreateReceipt";
 import { formatCurrency } from "@/lib/formatter";
 import type { CreateReceiptInput } from "@/schemas/receipt";
@@ -35,7 +36,7 @@ export const ConfirmImportDialog = ({
     try {
       await mutateAsync(receipt);
       onOpenChange(false);
-      router.push("/receipts");
+      router.push(ROUTES.receipts);
     } catch {
       onOpenChange(false);
     }

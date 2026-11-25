@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants/routes";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { getReceiptsOptions } from "@/lib/queryOptions/receipt";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
@@ -21,7 +22,7 @@ const ReceiptsPage = async () => {
           </h1>
           <Button
             nativeButton={false}
-            render={<Link href="/receipts/import" />}
+            render={<Link href={ROUTES.receiptsImport} />}
           >
             <Upload /> Import
           </Button>
