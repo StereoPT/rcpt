@@ -1,27 +1,43 @@
 "use client";
 
-import type { ReceiptListItem } from "@/actions/receipt/GetReceipts";
-import { formatDate } from "@/lib/date";
+import { ReceiptActions } from "@/components/receipts/ReceiptActions";
+import type { Receipt } from "@/generated/prisma/client";
 import { formatCurrency } from "@/lib/formatter";
 import type { ColumnDef } from "@tanstack/react-table";
+import { format } from "date-fns";
+import Link from "next/link";
 
-export const receiptColumns: ColumnDef<ReceiptListItem>[] = [
+export const receiptColumns: ColumnDef<Receipt>[] = [
   {
     accessorKey: "store",
     header: "Store",
+    size: 360,
+    cell: ({ row }) => (
+      <Link
+        className="font-medium hover:underline"
+        href={`/receipts/${row.original.id}`}
+      >
+        {row.original.store}
+      </Link>
+    ),
   },
   {
     accessorKey: "date",
     header: "Date",
-    cell: ({ row }) => formatDate(row.original.date),
+    size: 160,
+    cell: ({ row }) => format(row.original.date, "PPP"),
   },
   {
     accessorKey: "total",
     header: "Total",
-    cell: ({ row }) => formatCurrency(row.original.total),
+    size: 100,
+    cell: ({ row }) => (
+      <span className="tabular-nums">{formatCurrency(row.original.total)}</span>
+    ),
   },
   {
-    accessorKey: "lineItemCount",
-    header: "Line Items",
+    id: "actions",
+    size: 50,
+    cell: ({ row }) => <ReceiptActions receipt={row.original} />,
   },
 ];
