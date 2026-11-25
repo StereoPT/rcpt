@@ -1,5 +1,6 @@
 "use client";
 
+import { LoadingState } from "@/components/LoadingState";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -20,19 +21,9 @@ type ReceiptDetailProps = {
 };
 
 export const ReceiptDetail = ({ id }: ReceiptDetailProps) => {
-  const { data: receipt, isPending, isError } = useReceipt(id);
+  const { data: receipt, isPending } = useReceipt(id);
 
-  if (isPending) {
-    return <p className="text-muted-foreground">Loading receipt…</p>;
-  }
-
-  if (isError) {
-    return <p className="text-destructive">Could not load receipt.</p>;
-  }
-
-  if (!receipt) {
-    return <p className="text-muted-foreground">Receipt not found.</p>;
-  }
+  if (isPending || !receipt) return <LoadingState />;
 
   return (
     <>

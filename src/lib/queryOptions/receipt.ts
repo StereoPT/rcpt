@@ -7,6 +7,7 @@ export const getReceiptsOptions = () => {
   return queryOptions({
     queryKey: KEYS.receipts,
     queryFn: () => GetReceipts(),
+    throwOnError: true,
   });
 };
 
@@ -14,5 +15,6 @@ export const getReceiptOptions = (id: string) => {
   return queryOptions({
     queryKey: KEYS.receipt(id),
     queryFn: () => GetReceipt(id),
+    throwOnError: true,
   });
 };
