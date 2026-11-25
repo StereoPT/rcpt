@@ -12,7 +12,7 @@ model Receipt {
   
   store     String
   date      DateTime   @db.Date
-  total     Decimal    @db.Decimal(10, 2)
+  total     Float
   
   lineItems LineItem[]
 
@@ -27,8 +27,8 @@ model LineItem {
   receipt     Receipt @relation(fields: [receiptId], references: [id], onDelete: Cascade)
   
   description String
-  quantity    Decimal @db.Decimal(10, 3)
-  netAmount   Decimal @db.Decimal(10, 2)
+  quantity    Float
+  netAmount   Float
 
   @@index([receiptId])
 }
