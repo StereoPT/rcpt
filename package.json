@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
+    "typecheck": "prisma generate && next typegen && tsc --noEmit",
     "db:generate": "prisma generate"
   },
   "dependencies": {
